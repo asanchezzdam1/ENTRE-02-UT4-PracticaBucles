@@ -31,8 +31,49 @@ public class PracticaBucles {
      *   Utiliza solo bucles while
      */
     public void generarNumeros(int n)   {
-       //TODO
-
+        //Creamo variables locales para calcular unas cosas
+        int gehituZorizko= 0;
+        int i = 0;
+        int zorizko = generador.nextInt(6001) - 1000;
+        int gehienBikoiti = Integer.MIN_VALUE;
+        int bikoiti = 0;
+        int gehituBakoiti = 0;
+        //Se muestra un mensaje en la pantalla
+        System.out.println("Numero maximo de aleatorios a generar " + n + "\n o hasta que salga 0 \n");
+        // Entra si "n" es mayor que "y" y si aleatorio "zorizko" no es igual a 0
+        while(i < n && zorizko != 0){
+            //Si es par entra en la parte del if
+            if(!esImpar(zorizko)){
+                bikoiti++;
+                if(zorizko > gehienBikoiti){
+                    gehienBikoiti = zorizko;
+                }
+            }
+            //Si es impar hace el else
+            else{
+                gehituBakoiti += zorizko;
+            }
+            //Se crea la variable sinCeros y se llama al metodo creado antes 
+            int zerorikGabe = obtenerNumeroSinCeros(zorizko);
+            //Se muestra el resultado sin ceros
+            System.out.printf("%12d:%5d",zorizko, zerorikGabe);
+            i++;
+            //Almecena los numeros en 5 columnas
+            if(i % 5 == 0){
+                System.out.println();
+            }
+            gehituZorizko += zorizko;
+            zorizko = generador.nextInt(6001) - 1000;
+        }
+        if(bikoiti == 0){
+            gehienBikoiti = 0;
+        }
+        //Se hace la media del aleatorio y se divide entre todas la veces que se ha ejecutado el bucle
+        double batazBestekoa = gehituZorizko / i;
+        System.out.println();
+        System.out.printf("\n%25s%10.2f","Media:", batazBestekoa);
+        System.out.printf("\n%25s%10d","Suma impares:",gehituBakoiti);
+        System.out.printf("\n%25s%10d","Máximo pares:", gehienBikoiti);
     }
 
     /**
@@ -43,7 +84,6 @@ public class PracticaBucles {
         while(numero % 2 == 0){
             return false;
         }
-        
         return  true;
     }
 
@@ -57,10 +97,22 @@ public class PracticaBucles {
      *   
      */
     public int obtenerNumeroSinCeros(int numero)   {
-        //TODO
-        
-        
-        return 0;
+        int i = numero;
+        int berretzaile = 0;
+        int emaitza = 0;
+        while(i != 0){
+            int cifra = i % 10;
+            if(cifra == 0){
+                i = i / 10;
+            }
+            else{
+                int berretura = (int)(Math.pow(10,berretzaile));
+                emaitza = emaitza + cifra * berretura;
+                i = i / 10;
+                berretzaile++;
+            }
+        }
+        return emaitza;
     }
 
     /**
@@ -82,7 +134,7 @@ public class PracticaBucles {
      *   
      */
     public void escribirLetraN(int altura)    {
-       
+
     }
 
     /**
@@ -90,11 +142,7 @@ public class PracticaBucles {
      *  con bucles for
      */
     private void escribirCaracter(char caracter, int n)    {
-       //TODO
-       
-       
-       
-       
-    }
+        //TODO
 
+    }
 }
