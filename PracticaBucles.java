@@ -6,7 +6,6 @@ public class PracticaBucles {
     private final char ESPACIO = ' ';
     private final char CARACTER = '\u0040';
     private Random generador;
-
     /**
      * Constructor  
      */
@@ -97,9 +96,9 @@ public class PracticaBucles {
      *   
      */
     public int obtenerNumeroSinCeros(int numero)   {
+        int emaitza = 0;
         int i = numero;
         int berretzaile = 0;
-        int emaitza = 0;
         while(i != 0){
             int cifra = i % 10;
             if(cifra == 0){
@@ -134,7 +133,8 @@ public class PracticaBucles {
      *   
      */
     public void escribirLetraN(int altura)    {
-
+        System.out.println("La letra N va ha ser: " + altura + " Caracteres");
+        escribirCaracter(CARACTER, altura);
     }
 
     /**
@@ -142,7 +142,18 @@ public class PracticaBucles {
      *  con bucles for
      */
     private void escribirCaracter(char caracter, int n)    {
-        //TODO
-
+        String aux = "";
+        for (int a = 0; a < n; a++){
+            aux += caracter;
+            for (int b = 0; b < a; b++){
+                aux += ESPACIO;
+            }
+            aux += caracter;
+            for (int c = n - a; c > 1; c--){
+                aux += ESPACIO;
+            }
+            aux += caracter + "\n";
+        }
+        System.out.println(aux);
     }
 }
