@@ -101,14 +101,14 @@ public class PracticaBucles {
         int berretzaile = 0;
         while(i != 0){
             int cifra = i % 10;
-            if(cifra == 0){
-                i = i / 10;
-            }
-            else{
+            if(cifra != 0){
                 int berretura = (int)(Math.pow(10,berretzaile));
                 emaitza = emaitza + cifra * berretura;
                 i = i / 10;
                 berretzaile++;
+            }
+            else{
+                i = i / 10;
             }
         }
         return emaitza;
@@ -142,18 +142,18 @@ public class PracticaBucles {
      *  con bucles for
      */
     private void escribirCaracter(char caracter, int n)    {
-        String aux = "";
+        String idatziKarakterra = "";
         for (int a = 0; a < n; a++){
-            aux += caracter;
+            idatziKarakterra += caracter;
             for (int b = 0; b < a; b++){
-                aux += ESPACIO;
+                idatziKarakterra += ESPACIO;
             }
-            aux += caracter;
+            idatziKarakterra += caracter;
             for (int c = n - a; c > 1; c--){
-                aux += ESPACIO;
+                idatziKarakterra += ESPACIO;
             }
-            aux += caracter + "\n";
+            idatziKarakterra += caracter + "\n";
         }
-        System.out.println(aux);
+        System.out.println(idatziKarakterra);
     }
 }
